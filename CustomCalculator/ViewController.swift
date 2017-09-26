@@ -63,11 +63,31 @@ class ViewController: UIViewController {
     @IBAction func equalsPressed(sender: UIButton){
         processOp(operation: currentOperation)
     }
-    /*
+    
     @IBAction func clearEverything(sender: UIButton){
         tempNum = "0"
+        label.text = tempNum
+        currentOperation = Operation.Empty
     }
-    */
+    
+    @IBAction func deletePressed(sender: UIButton){
+        if(label.text != "0"){
+            let index = tempNum.index(tempNum.startIndex, offsetBy: tempNum.count-1)
+            //tempNum = tempNum.substring(to: index)
+            tempNum = String(tempNum[..<index])
+            if(tempNum == ""){
+                label.text = "0"
+            }
+            else{
+                label.text = tempNum
+            }
+        }
+        else{
+            tempNum = ""
+            label.text = "0"
+        }
+    }
+    
     
     func processOp(operation: Operation){
         if currentOperation != Operation.Empty{
